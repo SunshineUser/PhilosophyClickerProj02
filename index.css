@@ -1,0 +1,63 @@
+body{
+    background-color: rgb(173, 180, 134);
+}
+
+section.twoColumns{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction:row;
+    width:10;
+
+}
+
+section.platoClicker{
+    background-color: rgb(148, 148, 148);
+    border:solid black 1px;
+    margin: 2em;
+}
+
+section.platoClicker img{
+    width: 378px;
+    height: 378px; 
+    border-radius: 50%;
+}
+
+
+section.philobox{
+    background-color:rgb(230, 230, 230);
+    border-top:black 2px;
+    margin: 2em;
+    flex-direction:column;
+    max-width:300%;
+    height:50em;
+}   
+
+header > section.philobox{
+    font-size:50;
+}
+
+div.philosopher{
+    font-size:20px;
+    padding-top:.4em;
+    padding-bottom:.4em;
+    background-color:rgb(225, 198, 170);
+    
+}
+
+div.quote{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style:italic;
+    font-size:15px;
+    color:231b12;
+    border:3px 956b50 ridge;
+}
+
+
+div.philoName{
+    margin-bottom:.3em;
+    font-size:30px;
+    font-family:'Cinzel', serif;
+    border:10px black;
+    box-shadow:grey 2px 2px;
+}
