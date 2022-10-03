@@ -2,11 +2,11 @@
 let philosopherCost = {
 
     aristotleCost: 10,
-    socratesCost: 100,
-    diogenesCost: 1500,
-    ciceroCost: 4000,
-    senecaCost: 25000,
-    aureliusCost: 200000
+    socratesCost: 50,
+    diogenesCost: 1000,
+    ciceroCost: 2000,
+    senecaCost: 12000,
+    aureliusCost: 50000
 
 }
 
@@ -23,13 +23,12 @@ let aureliusPrice = document.getElementById("aurelius-price")
 let stateOfMankind = {
     light: 0,
     illuminationValue: 0,
-    buildingPower: 0,
-    intervalLoopID: undefined
+    intervalLoopID: undefined,
+    clickervalue: 1
 }
 
 
-//let buildingBlocks
-let buildingBlocks = document.getElementById("building-resources")
+
 //passive philosophers
 let passiveIlluminationGeneratedText = document.getElementById("passive-light-generated-total")
 //light total
@@ -43,11 +42,12 @@ let enlightenmentElement = document.getElementById("lightImg");
 // Step #2) Setting up your event listener and connecting it to the element that you want 
     // Step #2a) Remember - event listeners require callback functions. Sometimes, it is helpful to write your callback functions OUTSIDE of the .addEventListener method. 
     // Tip: Callback functions are just functions that are passed in as an argument to another function. 
-function lightIncrementer(){
 
-    //set the object "state of mankind" light number to +1, change the visual element on the HTML page
-    stateOfMankind.light = stateOfMankind.light +1;
+function lightIncrementer(){
+    //set the object "state of mankind" light number to clicker value, change the visual element on the HTML page
+    stateOfMankind.light = stateOfMankind.light + stateOfMankind.clickervalue;
     lightNumEle.textContent= stateOfMankind.light;
+    philosopherAppear()
 }
 
 //event listener, associated with the function that changes the object as well as the HTML to represent Light
@@ -63,6 +63,10 @@ let diogenesbttnEle = document.getElementById("diogenes-bttn");
 let cicerobttnEle = document.getElementById("cicero-bttn");
 let senecabttnEle = document.getElementById("seneca-bttn");
 let aureliusbttnEle = document.getElementById("aurelius-bttn");
+
+let athensbttnEle = document.getElementById("athens-bttn");
+let spartabttnEle = document.getElementById("sparta-bttn");
+let romebttnEle = document.getElementById("rome-bttn");
 //step2 ) attach an event listener to that button element. 
     //2a create a callback function to use.
 
@@ -71,6 +75,7 @@ function priceIncreaseMath(currentRate){
     currentRate = Math.round(currentRate*1.14548169307);
     return (currentRate);
 }
+
 
 
 function aristotleIsBorn(){
@@ -88,10 +93,8 @@ function aristotleIsBorn(){
         lightNumEle.textContent = stateOfMankind.light;
         //represent the change in resources per second by however much the light/building the generator creates
         stateOfMankind.illuminationValue += 1;
-        stateOfMankind.buildingPower += 1;
         //represent the visual representation of passive illumination generated
         passiveIlluminationGeneratedText.textContent = stateOfMankind.illuminationValue;
-        buildingBlocks.textContent = stateOfMankind.buildingPower;
     }
 }
 
@@ -128,7 +131,7 @@ function diogenesIsBorn(){
 
         lightNumEle.textContent = stateOfMankind.light;
         //represent the change in resources per second by however much the light/building the generator creates
-        stateOfMankind.illuminationValue =-1 ;
+        stateOfMankind.illuminationValue = stateOfMankind.illuminationValue-1 ;
         //represent the visual representation of passive illumination generated
         passiveIlluminationGeneratedText.textContent = stateOfMankind.illuminationValue;
     }
@@ -147,7 +150,7 @@ function ciceroIsBorn(){
 
         lightNumEle.textContent = stateOfMankind.light;
         //represent the change in resources per second by however much the light/building the generator creates
-        stateOfMankind.illuminationValue +=1500 ;
+        stateOfMankind.illuminationValue +=100 ;
         //represent the visual representation of passive illumination generated
         passiveIlluminationGeneratedText.textContent = stateOfMankind.illuminationValue;
     }
@@ -166,7 +169,7 @@ function senecaIsBorn(){
 
         lightNumEle.textContent = stateOfMankind.light;
         //represent the change in resources per second by however much the light/building the generator creates
-        stateOfMankind.illuminationValue +=10000 ;
+        stateOfMankind.illuminationValue +=500 ;
         //represent the visual representation of passive illumination generated
         passiveIlluminationGeneratedText.textContent = stateOfMankind.illuminationValue;
     }
@@ -184,19 +187,54 @@ function aureliusIsBorn(){
 
         lightNumEle.textContent = stateOfMankind.light;
         //represent the change in resources per second by however much the light/building the generator creates
-        stateOfMankind.illuminationValue +=100000 ;
+        stateOfMankind.illuminationValue +=2000;
         //represent the visual representation of passive illumination generated
         passiveIlluminationGeneratedText.textContent = stateOfMankind.illuminationValue;
     }
 }
 
+
+function athensIsBuilt(){
+    if(stateOfMankind.light >= 500 && stateOfMankind.clickervalue == 1){
+        stateOfMankind.light =stateOfMankind.light- 500;
+        stateOfMankind.clickervalue += 4;
+        document.getElementById("athens-bttn").style.filter="brightness(100%)";
+        document.getElementById("sparta-bttn").style.filter="brightness(50%)";
+    }
+}
+function spartaIsBuilt(){
+    if(stateOfMankind.light>= 2000 && stateOfMankind.clickervalue <= 5){
+        stateOfMankind.light = stateOfMankind.light- 2000;
+        stateOfMankind.clickervalue += 30;
+        document.getElementById("sparta-bttn").style.filter="brightness(100%)";
+        document.getElementById("rome-bttn").style.filter="brightness(50%)";
+    }
+}
+
+function romeIsBuilt(){
+    if(stateOfMankind.light>= 10000 && stateOfMankind.clickervalue <= 35){
+        stateOfMankind.light = stateOfMankind.light- 10000;
+        stateOfMankind.clickervalue += 115;
+        document.getElementById("rome-bttn").style.filter="brightness(100%)";
+    }
+}
 //using the function within an html context to an event listener
+
 aristotlebttnEle.addEventListener("click",aristotleIsBorn)
 socratesbttnEle.addEventListener("click",socratesIsBorn)
 diogenesbttnEle.addEventListener("click",diogenesIsBorn)
 cicerobttnEle.addEventListener("click",ciceroIsBorn)
 senecabttnEle.addEventListener("click",senecaIsBorn)
 aureliusbttnEle.addEventListener("click",aureliusIsBorn)
+
+//listener for clicker button attributes
+athensbttnEle.addEventListener("click",athensIsBuilt)
+spartabttnEle.addEventListener("click",spartaIsBuilt)
+romebttnEle.addEventListener("click",romeIsBuilt)
+
+
+
+
 
 
 
@@ -206,10 +244,10 @@ let startBttnEle = document.getElementById("start-bttn");
 
 function platoDreams(){
     //increment the amount of light stateOfMankind has
+    philosopherAppear();
     stateOfMankind.light += stateOfMankind.illuminationValue;
     //update website
     lightNumEle.textContent = stateOfMankind.light;
-
 }
 
 function illuminationPower(){
@@ -221,7 +259,7 @@ function illuminationPower(){
     // uses Id number to set up pause function later
 }
 
-//illuminate me with your light aritstotle(daddy)
+//illuminate me with your light aritstotle
 startBttnEle.addEventListener("click", illuminationPower)
 
 //pause interval
@@ -236,3 +274,26 @@ function pauseIntervalLoop(){
 };
 
 pauseBttnEle.addEventListener("click", pauseIntervalLoop) 
+
+function philosopherAppear(){
+    if(stateOfMankind.light >= philosopherCost.socratesCost)
+    {
+        document.getElementById("socrates-bttn").style.display = "block";
+    }
+     if(stateOfMankind.light >= philosopherCost.diogenesCost)
+    {
+        document.getElementById("diogenes-bttn").style.display = "block";
+    }
+    if(stateOfMankind.light >= philosopherCost.ciceroCost)
+    {
+        document.getElementById("cicero-bttn").style.display = "block";
+    }
+    if(stateOfMankind.light >= philosopherCost.senecaCost)
+    {
+        document.getElementById("seneca-bttn").style.display = "block";
+    }
+    if(stateOfMankind.light >= philosopherCost.aureliusCost)
+    {
+        document.getElementById("aurelius-bttn").style.display ="block";
+    }
+}

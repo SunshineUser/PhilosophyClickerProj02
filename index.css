@@ -1,56 +1,104 @@
 body{
-    background-color: rgb(173, 180, 134);
+    background-color: rgb(196, 188, 171);
 }
 
 section.twoColumns{
     display:flex;
-    justify-content: space-around;
     align-items: center;
     flex-direction:row;
-    width:10;
-
 }
 
 section.platoClicker{
-    background-color: rgb(148, 148, 148);
-    border:solid black 1px;
-    margin: 2em;
+    display:flex;
+    flex-direction:column; 
+    align-items: center;
+    font-size:30px;
+    font-family:'Cinzel', serif;
+    width: 40em;
 }
 
 section.platoClicker img{
     width: 378px;
     height: 378px; 
     border-radius: 50%;
+    flex-grow:1;
 }
 
-
+section.background{
+    background-color:rgb(224, 191, 156);
+}
 section.philobox{
-    background-color:rgb(230, 230, 230);
-    border-top:black 2px;
-    margin: 2em;
+    display:flex;
+    background-color:rgb(224, 191, 156);
     flex-direction:column;
-    max-width:300%;
-    height:50em;
+    border:5px dotted rgb(168, 138, 98);
 }   
+div.clickerImprover{
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+    justify-content: left;
 
-header > section.philobox{
-    font-size:50;
 }
 
+div.city{
+    font-size:23px;
+    font-family:'Cinzel', serif;
+    font-style:italic;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding-left:2 em;
+    border: 2px solid rgb(141, 130, 130);
+}
+
+div.clickerText{
+    font-style:italic;
+    font-weight:bold;
+    font-size:17px;
+    background-color:rgb(196, 164, 130);
+    box-shadow: 10px black;
+}
+
+div.clickerImprover img{
+    max-width:175px;
+    height:120px;
+}
+#athens-bttn{
+    filter: brightness(50%);
+}
+#sparta-bttn{
+    filter: brightness(25%);
+}
+#rome-bttn{
+    filter: brightness(0%);
+}
+section.columnr img{
+    max-width: 150px;
+    max-height: 150px;
+    float:right;
+    justify-content: center;
+}
+section.columnl img{
+    max-width: 150px;
+    max-height: 150px;
+    float:left;
+}
 div.philosopher{
     font-size:20px;
     padding-top:.4em;
     padding-bottom:.4em;
-    background-color:rgb(225, 198, 170);
-    
+    background-color:rgb(224, 191, 156);
+    justify-content:center;
 }
 
 div.quote{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-style:italic;
-    font-size:15px;
+    font-size:13px;
     color:231b12;
-    border:3px 956b50 ridge;
+    border-bottom:1px solid rgb(128, 121, 87);
+   
 }
 
 
@@ -58,6 +106,41 @@ div.philoName{
     margin-bottom:.3em;
     font-size:30px;
     font-family:'Cinzel', serif;
-    border:10px black;
-    box-shadow:grey 2px 2px;
+    box-shadow:rgb(145, 126, 105) 3px 3px;
+}
+
+section.price{
+    font-size:20px;
+    font-style:oblique;
+    font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    
+}
+
+section.philImages img{
+    max-width: 150px;
+    max-height: 148px;
+    float:left;
+} 
+#aristotle-bttn{
+    background-color:rgb(224, 191, 156);
+}
+#socrates-bttn{
+    display:none;
+    background-color:rgb(224, 191, 156);
+}
+#diogenes-bttn{
+    display:none;
+    background-color:rgb(224, 191, 156);
+}
+#cicero-bttn{
+    display:none;
+    background-color:rgb(224, 191, 156);
+}
+#seneca-bttn{
+    display:none;
+    background-color:rgb(224, 191, 156);
+}
+#aurelius-bttn{
+    display:none;
+    background-color:rgb(224, 191, 156);
 }
